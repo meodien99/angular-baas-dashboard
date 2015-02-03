@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/style.css"/>
+
+    <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title>Side Bar toggle</title>
+    <style>
+    </style>
+</head>
+<body>
+<div id="header">
+    <div class="logo-header">
+        <div class="logo">LOGO</div>
+        <div class="box current-app"><span class="current">CurrentApp</span>
+            <ul>
+                <li><a href="#"><span></span>App1</a></li>
+                <li><a href="#"><span></span>App2</a></li>
+                <li><a href="#"><span></span>App3</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-plus"></span> Create app</a></li>
+            </ul>
+        </div>
+        <span class="glyphicon glyphicon-align-justify toggle" id="toggle" aria-hidden="true"></span>
+    </div>
+    <div class="user-header">
+        <ul>
+            <li><a href="#"><img src="https://secure.gravatar.com/avatar.php?gravatar_id=69e668148b189b8e3fef9d0509f6d53e&size=130&default=https%3A%2F%2Fwww.parse.com%2Fimages%2Faccounts%2Fno_avatar.png" alt=""/>User</a></li>
+            <li><a href=""><span class="glyphicon glyphicon-user"></span>Account</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-th"></span>Dashboard</a>
+                <ul>
+                    <li><a href="#"><span></span>App1</a></li>
+                    <li><a href="#"><span></span>App2</a></li>
+                    <li><a href="#"><span></span>App3</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="wrapper">
+    <!--Side bar-->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand active">
+                <span class="glyphicon glyphicon-th"></span>Data
+                <ul>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> User<b class="count">0</b></a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Product<b class="count">10</b></a></li>
+                    <li><a href="#"><span></span> Element3<b class="count">99</b></a></li>
+                    <li><a href="#"><span></span> Element4<b class="count">12</b></a></li>
+                    <li>
+                        <div class="sidebar-action">
+                            <a href="#"><span class="glyphicon glyphicon-plus"></span> Add class</a>
+                            <a href="#"><span class="glyphicon glyphicon-circle-arrow-up"></span> Import</a>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="setting.html"><span class="glyphicon glyphicon-cog"></span> Setting</a></li>
+        </ul>
+    </div>
+    <div id="page-content-wrapper" >
+        <div class="table-action">
+            <ul>
+                <li><span>+ Row</span></li>
+                <li><span>- Row</span></li>
+                <li><span>+ Col</span></li>
+                <li class="action-more"><span>More</span>
+                    <ul>
+                        <li>Delete column</li>
+                        <li>Delete all rows</li>
+                        <li>Drop class</li>
+                        <li>Export class</li>
+                    </ul>
+                </li>
+                <li class="filter"><span class="glyphicon glyphicon-filter"></span>
+                    <div class="filter-wrapper">
+                        <span class="glyphicon glyphicon-filter filter-icon"></span>
+                        <div class="filters-container">
+                            <table class="filters">
+                                <tbody>
+                                <tr>
+                                    <td class="constraint_column">
+                                        <div class="dropdown">
+                                            <select class="field">
+                                                <option value="objectId">objectId</option>
+                                                <option value="username">username</option>
+                                                <option value="email">email</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td class="constraint_comparator">
+                                        <div class="dropdown">
+                                            <select class="op">
+                                                <option value="equals">equals</option>
+                                                <option value="does not equal">does not equal</option>
+                                                <option value="starts with">starts with</option>
+                                                <option value="exists">exists</option>
+                                                <option value="does not exist">does not exist</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td class="constraint_value">
+                                        <input type="text" />
+                                    </td>
+                                    <td class="constraint_remove" id="unable">
+                                        <span class="glyphicon glyphicon-remove filter-close" ></span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="controls">
+                                <a class="add-constrain ui_button" href="#"><i class="glyphicon glyphicon-plus"></i><span>Add condition</span></a>
+                                <a class="submit ui_button" href="#"><i class="glyphicon glyphicon-ok-sign"></i><span>Apply</span></a>
+                                <a class="dismiss" href="#">Clear all</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="table-data">
+            <table>
+                <thead class="data-field">
+                <tr>
+                    <th><input type="checkbox" name="checkbox"/></th>
+                    <th><span class="data-schema-name">objectId</span> <span class="data-schema-type">String</span></th>
+                    <th><span class="data-schema-name">username</span> <span class="data-schema-type">String</span></th>
+                    <th><span class="data-schema-name">email</span> <span class="data-schema-type">String</span></th>
+                    <th><span class="data-schema-name">password</span> <span class="data-schema-type">String</span></th>
+                    <th><span class="data-schema-name">otherThing</span> <span class="data-schema-type">String</span></th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">1afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin </td>
+                    <td class="data-schema-data">admin@example.com </td>
+                    <td class="data-schema-data">mxkakm2312dsa123dk s11amnmxkakm2312dsa1 23dks11amnmx kakm2312dsa123dks11amnmx kakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined">(undefined)</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin</td>
+                    <td class="data-schema-data">admin@example.com</td>
+                    <td class="data-schema-data">mxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined">(undefined)</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin</td>
+                    <td class="data-schema-data">admin@example.com</td>
+                    <td class="data-schema-data">mxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined highlighted ">(undefined)</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin</td>
+                    <td class="data-schema-data">admin@example.com</td>
+                    <td class="data-schema-data">mxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined highlighted ">(undefined)</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin</td>
+                    <td class="data-schema-data">admin@example.com</td>
+                    <td class="data-schema-data">mxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined highlighted ">(undefined)</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin</td>
+                    <td class="data-schema-data">admin@example.com</td>
+                    <td class="data-schema-data">mxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined highlighted ">(undefined)</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin</td>
+                    <td class="data-schema-data">admin@example.com</td>
+                    <td class="data-schema-data">mxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined highlighted ">(undefined)</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin</td>
+                    <td class="data-schema-data">admin@example.com</td>
+                    <td class="data-schema-data">mxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined highlighted ">(undefined)</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin</td>
+                    <td class="data-schema-data">admin@example.com</td>
+                    <td class="data-schema-data">mxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined highlighted ">(undefined)</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin</td>
+                    <td class="data-schema-data">admin@example.com</td>
+                    <td class="data-schema-data">mxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined highlighted ">(undefined)</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin</td>
+                    <td class="data-schema-data">admin@example.com</td>
+                    <td class="data-schema-data">mxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined highlighted ">(undefined)</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin</td>
+                    <td class="data-schema-data">admin@example.com</td>
+                    <td class="data-schema-data">mxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined highlighted ">(undefined)</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin</td>
+                    <td class="data-schema-data">admin@example.com</td>
+                    <td class="data-schema-data">mxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined highlighted ">(undefined)</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin</td>
+                    <td class="data-schema-data">admin@example.com</td>
+                    <td class="data-schema-data">mxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined highlighted ">(undefined)</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin</td>
+                    <td class="data-schema-data">admin@example.com</td>
+                    <td class="data-schema-data">mxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined highlighted ">(undefined)</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin</td>
+                    <td class="data-schema-data">admin@example.com</td>
+                    <td class="data-schema-data">mxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined highlighted ">(undefined)</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin</td>
+                    <td class="data-schema-data">admin@example.com</td>
+                    <td class="data-schema-data">mxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined highlighted ">(undefined)</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin</td>
+                    <td class="data-schema-data">admin@example.com</td>
+                    <td class="data-schema-data">mxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined highlighted ">(undefined)</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin</td>
+                    <td class="data-schema-data">admin@example.com</td>
+                    <td class="data-schema-data">mxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined highlighted ">(undefined)</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin</td>
+                    <td class="data-schema-data">admin@example.com</td>
+                    <td class="data-schema-data">mxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined">(undefined)</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin</td>
+                    <td class="data-schema-data">admin@example.com</td>
+                    <td class="data-schema-data">mxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined">(undefined)</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="checkbox"/></td>
+                    <td class="data-schema-data">1afs9231j2w8c8wqejs123c</td>
+                    <td class="data-schema-data">user admin</td>
+                    <td class="data-schema-data">admin@example.com</td>
+                    <td class="data-schema-data">mxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amnmxkakm2312dsa123dks11amn</td>
+                    <td class="data-schema-data undefined">(undefined)</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-paginate">
+            <div class="ui-action">
+                <div class="per-page">
+                    <select>
+                        <option value="20">20</option>
+                        <option value="40">40</option>
+                        <option value="60">60</option>
+                        <option value="80">80</option>
+                        <option value="100">100</option>
+                    </select>
+                    rows/page
+                </div>
+                <div class="ui-pagination">
+                    <a class="glyphicon glyphicon-chevron-left prev inactive" href="#"></a>
+                    <span>1 - 20 of 100 rows</span>
+                    <a class="glyphicon glyphicon-chevron-right next" href="#"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="footer">
+    <ul>
+        <li><a href="">Docs</a></li>
+        <li><a href="">Home</a></li>
+    </ul>
+</footer>
+<script src="js/main.js"></script>
+
+</body>
+</html>

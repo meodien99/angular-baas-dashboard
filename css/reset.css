@@ -1,0 +1,27 @@
+*{margin: 0;padding:0;}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,
+img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,
+thead,tr,th,td{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    font-family: inherit;
+    vertical-align: baseline;
+}
+ul,ol{
+    list-style: none;
+}
+article,aside,figure,footer,header,hgroup,menu,nav,section{display: block}
+.group:after{visibility: hidden; display: block ; font-size: 0; content: " "; clear: both; height: 0;}
+.group{display: inline-block; clear: both;}
+/*start commented backslash hack */
+html[xmlns] .group{ height: 1%;} .group{display: block;} /*close comment backlash hack*/
+/* TYPOGRAPHY */
+h1,h2,h3,h4,h5{}
+a img{border: 0}
+a{text-decoration: none;}
+.zoomer:active{top:0;}

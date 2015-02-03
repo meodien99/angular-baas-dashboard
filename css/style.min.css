@@ -1,0 +1,74 @@
+#header {width:100%;padding:0;height:60px;position:fixed;top:0;left:0;background-color:blue}
+#footer {width: 100%; height:50px;background: burlywood;position: fixed;bottom:0;left:0;}
+.logo-header{width:250px;float:left;height:100%;}
+.logo-header > div {padding:0;height:100%}
+.logo-header .logo {width:75px;float:left;background:yellow}
+.logo-header .current-app {width:175px;float:left;position:relative;padding:5px;height:100%;background-color:green}
+.logo-header ul {border:1px solid ;display: none;position:absolute; top:100%;left:0;z-index:999999;width:100%;overflow-y:auto;max-height:250px;}
+.logo-header ul li {width:100%;display:block;}
+.logo-header ul li:hover a {background-color:#e4e4e4; color:#fff}
+.logo-header ul li a {border-bottom: 1px solid; padding:15px 5px;width:100%;display:block}
+.logo-header span.toggle {display:block;position: absolute; border:1px solid red;font-size:2.4em;width:40px;z-index:999999;height:40px;top:10%;left:105%;padding:5px}
+.user-header{float:right}
+#header .user-header {display: none}
+#wrapper {width:100%;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    background: cadetblue;
+    height:918px;padding-left:250px;}
+#wrapper.toggled {
+    padding-left: 0;
+}
+#wrapper #sidebar-wrapper {background:#000;float:left;height:100%;overflow-y: auto;z-index:1000;-webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;width:250px;margin-left:-250px;}
+#wrapper.toggled #sidebar-wrapper { width: 0}
+#wrapper #page-content-wrapper {width:100%;height:100%;}
+#page-content-wrapper .table-action {background:yellow;float:left;width:100%;height:40px;position:fixed;top:60px}
+#page-content-wrapper .table-action ul {float:left;width:100%;height:100%;padding: 5px}
+.table-action ul li {float:left;height:100%;border: 1px solid red;margin:0 5px;border-radius: 8px;-webkit-transition: all 0.5s ease;-moz-transition: all 0.5s ease;-o-transition: all 0.5s ease;transition: all 0.5s ease;}
+.table-action ul li span {padding:10px; cursor:pointer;}
+.table-action ul li:hover {background:red}
+#page-content-wrapper .table-paginate {background: pink;width:100%;float:left;height:40px;position: fixed;bottom: 50px;right: 0}
+.table-paginate ul {float:left;width:100%;height:100%;padding:5px;}
+.table-paginate ul li {float:right;height:100%;border:1px solid red; margin:0 5px; border-radius: 8px;-webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;}
+.table-paginate ul li span {padding:10px; cursor:pointer}
+.table-paginate ul li:hover {background:red}
+#page-content-wrapper .table-info {overflow:auto;width: 100%;height: 100%;float:left;padding:5px}
+#wrapper.toggled #page-content-wrapper {margin-right:-250px}
+#sidebar-wrapper .sidebar-nav {width:250px;}
+.sidebar-nav li {
+    text-indent: 30px;
+    line-height: 40px;
+    width:100%;
+}
+.sidebar-nav li a {
+    display:block;
+    text-decoration: none;
+    color: #999999;
+}
+.sidebar-nav li a:hover{
+    text-decoration:none;
+    color:#fff;
+    background: rgba(255,255,255,0.2);
+}
+.sidebar-nav li a:active, .sidebar-nav li a:focus {
+    text-decoration: none
+}
+@media (min-width:768px) {
+
+}
+@media (max-width: 767px){
+    #page-content-wrapper {margin-left: 0}
+    #wrapper #sidebar-wrapper {width:100%; margin-left: 0;height:0;position: absolute }
+    #wrapper #sidebar-wrapper ul {width: 100%}
+    #wrapper {padding-left:0}
+    #wrapper.toggled #sidebar-wrapper {height:30%;width:100%; }
+    #wrapper.toggled #page-content-wrapper {margin-right:0;}
+
+}

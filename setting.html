@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/style.css"/>
+
+    <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.js"></script>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title>Side Bar toggle</title>
+    <style>
+    </style>
+</head>
+<body>
+<div id="header">
+    <div class="logo-header">
+        <div class="logo">LOGO</div>
+        <div class="box current-app"><span class="current">CurrentApp</span>
+            <ul>
+                <li><a href="#"><span></span>App1</a></li>
+                <li><a href="#"><span></span>App2</a></li>
+                <li><a href="#"><span></span>App3</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-plus"></span> Create app</a></li>
+            </ul>
+        </div>
+        <span class="glyphicon glyphicon-align-justify toggle" id="toggle" aria-hidden="true"></span>
+    </div>
+    <div class="user-header">
+        <ul>
+            <li><a href="#"><img src="https://secure.gravatar.com/avatar.php?gravatar_id=69e668148b189b8e3fef9d0509f6d53e&size=130&default=https%3A%2F%2Fwww.parse.com%2Fimages%2Faccounts%2Fno_avatar.png" alt=""/>User</a></li>
+            <li><a href=""><span class="glyphicon glyphicon-user"></span>Account</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-th"></span>Dashboard</a>
+                <ul>
+                    <li><a href="#"><span></span>App1</a></li>
+                    <li><a href="#"><span></span>App2</a></li>
+                    <li><a href="#"><span></span>App3</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="wrapper">
+    <!--Side bar-->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand active">
+                <span class="glyphicon glyphicon-th"></span>Data
+                <ul>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> User<b class="count">0</b></a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Product<b class="count">10</b></a></li>
+                    <li><a href="#"><span></span> Element3<b class="count">99</b></a></li>
+                    <li><a href="#"><span></span> Element4<b class="count">12</b></a></li>
+                </ul>
+            </li>
+            <li><a href=""><span class="glyphicon glyphicon-cog"></span> Setting</a></li>
+        </ul>
+    </div>
+    <div id="page-content-wrapper" >
+        <div class="options-wrapper">
+            <div class="option-title"><span></span> Application Keys</div>
+            <div class="option-detail">
+                <div class="option-name">Application key</div>
+                <div class="opt-value-wrapper">
+                    <div class="opt-value">iwPcfZkDIh749MLRQgJ4gr8jqakqe2efCTQNufZe</div>
+                    <div class="opt-copy">Copy</div>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+            <div class="option-detail">
+                <div class="option-name">Application key</div>
+                <div class="opt-value-wrapper">
+                    <div class="opt-value">iwPcfZkDIh749MLRQgJ4gr8jqakqe2efCTQNufZe</div>
+                    <div class="opt-copy">Copy</div>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+            <div class="option-detail">
+                <div class="option-name">Application key</div>
+                <div class="opt-value-wrapper">
+                    <div class="opt-value">iwPcfZkDIh749MLRQgJ4gr8jqakqe2efCTQNufZe</div>
+                    <div class="opt-copy">Copy</div>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+            <div class="option-detail">
+                <div class="option-name">Application key</div>
+                <div class="opt-value-wrapper">
+                    <div class="opt-value">iwPcfZkDIh749MLRQgJ4gr8jqakqe2efCTQNufZe</div>
+                    <div class="opt-copy">Copy</div>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+
+        <div class="options-wrapper">
+            <div class="option-title"><span></span> Application Keys</div>
+            <div class="option-detail">
+                <div class="option-name">Application key</div>
+                <div class="opt-value-wrapper">
+                    <div class="opt-value">iwPcfZkDIh749MLRQgJ4gr8jqakqe2efCTQNufZe</div>
+                    <div class="opt-copy">Copy</div>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+            <div class="option-detail">
+                <div class="option-name">Application key</div>
+                <div class="opt-value-wrapper">
+                    <div class="opt-value">iwPcfZkDIh749MLRQgJ4gr8jqakqe2efCTQNufZe</div>
+                    <div class="opt-copy">Copy</div>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+            <div class="option-detail">
+                <div class="option-name">Application key</div>
+                <div class="opt-value-wrapper">
+                    <div class="opt-value">iwPcfZkDIh749MLRQgJ4gr8jqakqe2efCTQNufZe</div>
+                    <div class="opt-copy">Copy</div>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+            <div class="option-detail">
+                <div class="option-name">Application key</div>
+                <div class="opt-value-wrapper">
+                    <div class="opt-value">iwPcfZkDIh749MLRQgJ4gr8jqakqe2efCTQNufZe</div>
+                    <div class="opt-copy">Copy</div>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="footer">
+    <ul>
+        <li><a href="">Docs</a></li>
+        <li><a href="">Home</a></li>
+    </ul>
+</footer>
+<script src="js/main.js"></script>
+
+</body>
+</html>
