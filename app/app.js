@@ -1,12 +1,19 @@
-angular.module('myApp',['ui.router.state'])
+angular.module('myApp',['ui.router.state','accountSettings'])
     .config(['$stateProvider', function($stateProvider){
         var home = {
             name: 'home',
             url : '/',
-            template: 'Hello {{name}}',
-            controller: ['$scope', function($scope){
-                $scope.name = "World";
-            }]
+            views : {
+                '':{
+                    template: 'Hello {{name}}',
+                    controller: ['$scope', function($scope){
+                        $scope.name = "World";
+                    }]
+                },
+                'foo' : {
+                    template : 'YOLO'
+                }
+            }
         };
 
 
@@ -28,19 +35,34 @@ angular.module('accountSettings',['ui.router.state'])
             name : 'settings.details',
             parent: settings,
             url :'',
-            templateUrl : 'settings.details.html'
+            views : {
+                '' : {
+                    templateUrl : 'settings.details.html'
+                },
+                hint : {
+                    template : 'edit your details !'
+                }
+            }
         };
 
         var quotes = {
             name : 'settings.quotes',
             parent : settings,
             url : '/quotes',
-            templateUrl : 'settings.quotes.html'
+            views : {
+                '' : {
+                    templateUrl : 'settings.quotes.html'
+                },
+                hint : {
+                    template : 'edit your quotes !'
+                }
+            }
         };
 
         $stateProvider.state(settings).state(details).state(quotes);
     }])
-    .controller('SettingsController', ['$scope', function($scope){
+    .controller('SettingsController', ['$scope','$state', function($scope,$state){
+        $scope.$state = $state;
         $scope.user = {
             name : 'Bob Loblaw',
             email : 'boblolbalh@gmail.com',
