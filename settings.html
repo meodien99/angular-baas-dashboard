@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="span3">
+        <div class="pa-sidebar well well-small">
+            <ul class="nav nav-list">
+                <li class="nav-header">Setting</li>
+                <li ng-class="{active: $state.includes(\'settings.user.default\')}"><a href="#/settings">User Details</a></li>
+                <li ng-class="{ active: $state.includes(\'settings.quotes\') }"><a href="#/settings/quotes">User Quotes</a></li>
+            </ul>
+            <hr/>
+        </div>
+    </div>
+    <div class="span9" ui-view></div>
+</div>
