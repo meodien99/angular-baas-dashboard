@@ -5,42 +5,43 @@
     <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
     <script>
         var myApp = angular.module('myApp', ['ui.router']);
-        myApp.config(['$stateProvider', function($stateProvider){
-            $stateProvider
-                    .state('index', {
-                        url :"",
-                        views : {
-                            "viewA": {
-                                template : "index.viewA"
-                            },
-                            "viewB" : {
-                                template : "indexs.viewB"
-                            }
+        myApp.controller('Controller',['$scope', function($scope){
+            $scope.format = 'M/d/yy h:mm:ss a';
+        }])
+                .directive('myCurrentTime',['$interval','dateFilter', function ($interval, dateFilter) {
+                    function link(scope, element, attrs) {
+                        var format, timeoutId;
+
+                        function updateTime(){
+                            element.text(dateFilter(new Date(), format));
                         }
-                    })
-                    .state('route1', {
-                        url : "/route1",
-                        views : {
-                            "viewA": { template : "route1.viewA"},
-                            "viewB" : { template : "route1.viewB"}
-                        }
-                    })
-                    .state('route2', {
-                        url : '/route2',
-                        views : {
-                            "viewA" : { template : 'route2.viewA'},
-                            "viewB" : { template : 'route2.viewB'}
-                        }
-                    })
-        }]);
+
+                        scope.$watch(attrs.myCurrentTime, function (value) {
+                            format = value;
+                            updateTime();
+                        });
+
+                        element.on('$destroy', function(){
+                           $interval.cancel();
+                        });
+
+                        timeoutId = $interval(function(){
+                            updateTime();
+                        }, 1000);
+                    }
+
+                    return {
+                        link : link
+                    }
+                }]);
     </script>
     <!--<script src="js/p1.js"></script>-->
 </head>
 <body>
-    <div ui-view="viewA"></div>
-    <div ui-view="viewB"></div>
-    <!-- Also a way to navigate -->
-    <a ui-sref="route1">Route 1</a>
-    <a ui-sref="route2">Route 2</a>
+<div ng-controller="Controller">
+    DateFormat : <input type="text" ng-model="format"/>
+    <hr/>
+    Current Time is : <span my-current-time="format"></span>
+</div>
 </body>
 </html>
